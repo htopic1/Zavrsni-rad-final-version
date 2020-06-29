@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ZavrsniRad"
+    }
+  },
+  "defaultProject": "ZavrsniRad",
+  "cli": {
+    "analytics": "9beda080-2a32-4222-80f3-dd863b17053a"
+  }
 }

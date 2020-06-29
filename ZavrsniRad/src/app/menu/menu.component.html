@@ -1,0 +1,199 @@
+<div id="menu">
+    <div id="menuContent">
+        <div id="menuLeft">
+            <div class="centerLeft"><img width="75px" title="postaviti klik na pocetnu stranicu" src="assets/logo.png"></div>
+            <div class="centerLeft" id="start">POČETNA</div>
+            <div class="centerLeft" id="menus" (mouseleave)="arrowTurnBack('menuTypes')">
+                <div id="menuMQ" (mouseover)="arrowTurnForward('menuTypes')">
+                    <img width="20px" src="assets/menu.svg">
+                    <div [ngStyle]="menuTypesHover">MENU</div>
+                </div>
+                <div id="typeOfMenu" [ngStyle]="menuTypes">
+                    <div id="underTriangle">
+                        <div id="triangle"></div>
+                    </div>
+                    <div class="typesOfMobiles2" id="mTMobile" (mouseover)="arrowTurnForward('typeOfMobileOnResize')" (mouseleave)="arrowTurnBack('typeOfMobileOnResize')">
+                        <div [ngStyle]="mobiteliHover">MOBITELI</div>
+                        <div id="underTriangleLeft" [ngStyle]="menuMQhideShowMo">
+                            <div id="triangleLeft"></div>
+                        </div>
+                        <div id="typeOfMobileOnResize" [ngStyle]="menuMQhideShowMo">
+                            <div class="typesOfMobilesMQ">SAMSUNG</div>
+                            <div class="typesOfMobilesMQ">LG</div>
+                            <div class="typesOfMobilesMQ">APPLE</div>
+                            <div class="typesOfMobilesMQ">ZTE</div>
+                            <div class="typesOfMobilesMQ">NOKIA</div>
+                            <div class="typesOfMobilesMQ">ALCATEL</div>
+                        </div>
+                    </div>
+                    <div class="typesOfTablets2" id="mTTablet" (mouseover)="arrowTurnForward('typeOfTabletOnResize')" (mouseleave)="arrowTurnBack('typeOfTabletOnResize')">
+                        <div [ngStyle]="tabletiHover">TABLETI</div>
+                        <div id="underTriangleLeft" [ngStyle]="menuMQhideShowT">
+                            <div id="triangleLeft"></div>
+                        </div>
+                        <div id="typeOfTabletOnResize" [ngStyle]="menuMQhideShowT">
+                            <div class="typesOfTabletsMQ">SAMSUNG</div>
+                            <div class="typesOfTabletsMQ">LG</div>
+                            <div class="typesOfTabletsMQ">APPLE</div>
+                            <div class="typesOfTabletsMQ">ZTE</div>
+                            <div class="typesOfTabletsMQ">NOKIA</div>
+                            <div class="typesOfTabletsMQ">ALCATEL</div>
+                        </div>
+                    </div>
+                    <div class="typesOfMultimedia2" id="mTMultimedia" (mouseover)="arrowTurnForward('typeOfMultimediaOnResize')" (mouseleave)="arrowTurnBack('typeOfMultimediaOnResize')">
+                        <div [ngStyle]="multimediaHover">MULTIMEDIA</div>
+                        <div id="underTriangleLeft" [ngStyle]="menuMQhideShowMu">
+                            <div id="triangleLeft"></div>
+                        </div>
+                        <div id="typeOfMultimediaOnResize" [ngStyle]="menuMQhideShowMu">
+                            <div class="typesOfMultimediaMQ">SAMSUNG</div>
+                            <div class="typesOfMultimediaMQ">LG</div>
+                            <div class="typesOfMultimediaMQ">APPLE</div>
+                            <div class="typesOfMultimediaMQ">ZTE</div>
+                            <div class="typesOfMultimediaMQ">NOKIA</div>
+                            <div class="typesOfMultimediaMQ">ALCATEL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="centerLeft" id="mobiles" (mouseleave)="arrowTurnBack('turn90degMobiles')">
+                <div id="mobilesHover" (mouseover)="arrowTurnForward('turn90degMobiles')">
+                    <div [ngStyle]="turn90degMobile">
+                        <img class="arrowRight" width="20px" src="assets/arrow right.svg">
+                    </div>
+                    <div [ngStyle]="mobiteli2Hover">MOBITELI</div>
+                </div>
+                <div id="typeOfMobile" [ngStyle]="menuMobile">
+                    <div id="underTriangle">
+                        <div id="triangle"></div>
+                    </div>
+                    <div class="typesOfMobiles2">SAMSUNG</div>
+                    <div class="typesOfMobiles2">LG</div>
+                    <div class="typesOfMobiles2">APPLE</div>
+                    <div class="typesOfMobiles2">ZTE</div>
+                    <div class="typesOfMobiles2">NOKIA</div>
+                    <div class="typesOfMobiles2">ALCATEL</div>
+                </div>
+            </div>
+            <div  (mouseleave)="arrowTurnBack('turn90degTablets')" class="centerLeft" id="tablets">
+                <div id="tabletsHover" (mouseover)="arrowTurnForward('turn90degTablets')">
+                    <div [ngStyle]="turn90degTablet">
+                        <img class="arrowRight" width="20px" src="assets/arrow right.svg">
+                    </div>
+                    <div [ngStyle]="tableti2Hover">TABLETI</div>
+                </div>
+                <div id="typeOfTablet" [ngStyle]="menuTablet">
+                    <div id="underTriangle">
+                        <div id="triangle"></div>
+                    </div>
+                    <div class="typesOfTablets2">SAMSUNG</div>
+                    <div class="typesOfTablets2">LG</div>
+                    <div class="typesOfTablets2">NOKIA</div>
+                    <div class="typesOfTablets2">ALCATEL</div>
+                </div>
+            </div>
+            <div (mouseleave)="arrowTurnBack('turn90degMultimedia')" class="centerLeft" id="multimedia">
+                <div id="multimediaHover" (mouseover)="arrowTurnForward('turn90degMultimedia')">
+                    <div [ngStyle]="turn90degMultimedia">
+                        <img class="arrowRight" width="20px" src="assets/arrow right.svg">
+                    </div>
+                    <div [ngStyle]="multimedia2Hover">MULTIMEDIJA</div>
+                </div>    
+                <div id="typeOfMultimedia" [ngStyle]="menuMultimedia">
+                    <div id="underTriangle">
+                        <div id="triangle"></div>
+                    </div>
+                    <div class="typesOfMultimedia2">SAMSUNG</div>
+                    <div class="typesOfMultimedia2">LG</div>
+                    <div class="typesOfMultimedia2">APPLE</div>
+                    <div class="typesOfMultimedia2">NOKIA</div>
+                    <div class="typesOfMultimedia2">ALCATEL</div>
+                </div>
+            </div>
+            <div class="centerLeft" id="aboutUs">O NAMA</div>
+        </div>
+
+        <div id="menuLeft2">
+            <div class="centerLeft2"><img width="75px" title="postaviti klik na pocetnu stranicu" src="assets/logo.png"></div>
+            <div (mouseleave)="justMenu('menu500pxhide')">
+                <div class="centerLeft2" (mouseover)="justMenu('menu500pxshow')">
+                    <img width="20px" src="assets/menu.svg">
+                    <div id="menu2Hover" [ngStyle]="darkMenu">MENU</div>
+                    <div id="borderToMenu"></div>
+                </div>
+                <div id="menuOnResize" [ngStyle]="hideShowJustMenu">
+                        <!--<div class="border"></div>-->
+                        <div class="menu2" (mouseleave)="arrowTurnBack('mobiles')">
+                            <div id="mobiles2" (mouseover)="arrowTurnForward('mobiles')">
+                                <div class="inline" [ngStyle]="darkModeMobiles"><div [ngStyle]="mobile90deg"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div>MOBITELI</div>
+                            </div>
+                            <div class="border"></div>
+                            <div id="typesOfMobiles">
+                                <div class="types">SAMSUNG</div>
+                                <div class="types">LG</div>
+                                <div class="types">HUAWEI</div>
+                                <div class="types">MOTOROLA</div>
+                                <div class="types">SONY</div>
+                                <div class="types">TESLA</div>
+                                <div class="types">APPLE</div>
+                            </div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="menu2" (mouseleave)="arrowTurnBack('tablets')">
+                            <div id="tablets2" (mouseover)="arrowTurnForward('tablets')">
+                                <div class="inline" [ngStyle]="darkModeTablets"><div [ngStyle]="tablet90deg"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div>TABLETI</div>
+                            </div>
+                            <div class="border"></div>
+                            <div id="typesOfTablets">
+                                <div class="types">SAMSUNG</div>
+                                <div class="types">LG</div>
+                                <div class="types">HUAWEI</div>
+                                <div class="types">MOTOROLA</div>
+                                <div class="types">SONY</div>
+                                <div class="types">TESLA</div>
+                                <div class="types">APPLE</div>
+                            </div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="menu2" (mouseleave)="arrowTurnBack('multimedia')">
+                            <div id="multimedia2" (mouseover)="arrowTurnForward('multimedia')">
+                                <div class="inline" [ngStyle]="darkModeMultimedia"><div [ngStyle]="multimedia90deg"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div>MULTIMEDIJA</div>
+                            </div>
+                            <div class="border"></div>
+                            <div id="typesOfMultimedia">
+                                <div class="types">SAMSUNG</div>
+                                <div class="types">LG</div>
+                                <div class="types">HUAWEI</div>
+                                <div class="types">MOTOROLA</div>
+                                <div class="types">SONY</div>
+                                <div class="types">TESLA</div>
+                                <div class="types">APPLE</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="menuRight">
+            <div class="centerRight">
+                <div id="login" (mouseover)="showBorder('login')" (mouseleave)="hideBorder('login')">
+                    <div id="animationTopRight" [ngStyle]="borderBtnLogin1"></div>
+                    <div id="animationTop" [ngStyle]="borderBtnLogin2"></div>
+                    <div id="animationRight" [ngStyle]="borderBtnLogin3"></div>
+                    <div id="animationBottom" [ngStyle]="borderBtnLogin4"></div>
+                    <div id="animationLeft" [ngStyle]="borderBtnLogin5"></div>
+                    Log in
+                </div>
+            </div>
+            <div class="centerRight">
+                <div id="signup" (mouseover)="showBorder('signup')" (mouseleave)="hideBorder('signup')">
+                    <div id="animationTopRight" [ngStyle]="borderBtnSignup1"></div>
+                    <div id="animationTop" [ngStyle]="borderBtnSignup2"></div>
+                    <div id="animationRight" [ngStyle]="borderBtnSignup3"></div>
+                    <div id="animationBottom" [ngStyle]="borderBtnSignup4"></div>
+                    <div id="animationLeft" [ngStyle]="borderBtnSignup5"></div>
+                    Sign up
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
