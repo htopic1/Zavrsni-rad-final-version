@@ -1,0 +1,71 @@
+<div id="signup" (click)="showLogin()" (mouseover)="showBorder()" (mouseleave)="hideBorder()">
+    <div id="animationTopRight" [ngStyle]="borderBtnSignup1"></div>
+    <div id="animationTop" [ngStyle]="borderBtnSignup2"></div>
+    <div id="animationRight" [ngStyle]="borderBtnSignup3"></div>
+    <div id="animationBottom" [ngStyle]="borderBtnSignup4"></div>
+    <div id="animationLeft" [ngStyle]="borderBtnSignup5"></div>
+    Sign up
+</div>
+
+<div id="darkCurtain" [ngStyle]="login"></div>
+<div id="loginPage" [ngStyle]="login">
+    <div id="secondPart">
+        <div id="content">
+            <div class="proa">
+                <div id="title">SIGN UP</div>
+            </div>
+            <br>
+            <div class="proa">
+                <div class="typeInformation">NAME:  *</div>
+                <div class="input">
+                    <input type="text" placeholder="Type your name">
+                </div>
+            </div>
+            <div class="proa">
+                <div class="typeInformation">NAME:  *</div>
+                <div class="input">
+                    <input type="text" placeholder="Type your name">
+                </div>
+            </div>
+            <div class="proa">
+                <div class="typeInformation">NAME:  *</div>
+                <div class="input">
+                    <input type="text" placeholder="Type your name">
+                </div>
+            </div>
+            <br>
+            <div class="proa">
+                <div class="typeInformation">SURNAME:  *</div>
+                <div class="input">
+                    <input type="text" placeholder="Type your name">
+                </div>
+            </div>
+            <br>
+            <div class="proa">
+                <div class="typeInformation">EMAIL:  *</div>
+                <div class="input">
+                    <input type="email" placeholder="Type your email">
+                </div>
+            </div>
+            <br>
+            <div class="proa">
+                <div class="typeInformation">PASSWORD:  *</div>
+                <div class="input">
+                    <input type="password" placeholder="Type your password">
+                </div>
+            </div>
+            <br>
+            <div class="proa">
+                <div class="typeInformation">CONFIRM PASSWORD:  *</div>
+                <div class="input">
+                    <input type="text" placeholder="Type your name">
+                </div>
+            </div>
+            <br><br>
+            <div class="proa" id="buttons">
+                <div id="loginBtn2">SIGN UP</div>&nbsp;&nbsp;&nbsp;
+                <div id="cancle" (click)="hideLogin()">NAZAD</div>
+            </div>
+        </div>
+    </div>
+</div>

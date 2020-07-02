@@ -112,7 +112,6 @@
             </div>
             <div class="centerLeft" id="aboutUs">O NAMA</div>
         </div>
-
         <div id="menuLeft2">
             <div class="centerLeft2"><img width="75px" title="postaviti klik na pocetnu stranicu" src="assets/logo.png"></div>
             <div (mouseleave)="justMenu('menu500pxhide')">
@@ -175,24 +174,10 @@
         </div>
         <div id="menuRight">
             <div class="centerRight">
-                <div id="login" (mouseover)="showBorder('login')" (mouseleave)="hideBorder('login')">
-                    <div id="animationTopRight" [ngStyle]="borderBtnLogin1"></div>
-                    <div id="animationTop" [ngStyle]="borderBtnLogin2"></div>
-                    <div id="animationRight" [ngStyle]="borderBtnLogin3"></div>
-                    <div id="animationBottom" [ngStyle]="borderBtnLogin4"></div>
-                    <div id="animationLeft" [ngStyle]="borderBtnLogin5"></div>
-                    Log in
-                </div>
+                <login></login>
             </div>
             <div class="centerRight">
-                <div id="signup" (mouseover)="showBorder('signup')" (mouseleave)="hideBorder('signup')">
-                    <div id="animationTopRight" [ngStyle]="borderBtnSignup1"></div>
-                    <div id="animationTop" [ngStyle]="borderBtnSignup2"></div>
-                    <div id="animationRight" [ngStyle]="borderBtnSignup3"></div>
-                    <div id="animationBottom" [ngStyle]="borderBtnSignup4"></div>
-                    <div id="animationLeft" [ngStyle]="borderBtnSignup5"></div>
-                    Sign up
-                </div>
+                <signup></signup>
             </div>
         </div>
     </div>

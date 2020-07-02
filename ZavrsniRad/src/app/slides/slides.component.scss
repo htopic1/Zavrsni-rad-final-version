@@ -1,0 +1,220 @@
+@import '../scss-components/scss-variables';
+@import '../scss-components/scss-mixins';
+
+#slides
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $deepBlue;
+    border-bottom: 2px solid $northernSky;
+
+    #slide
+    {
+        margin: 50px;
+        width: 1150px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        
+        #upperHalf
+        {
+            display: flex;
+            width: 100%;
+            height: 70%;
+
+            #text
+            {
+                width: 35%;
+                height: 100%;
+                padding: 0% 5% 0% 10%;
+                border-bottom: 3px solid $northernSky;
+                color: $babyBlue;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                transition: 1.5s;
+
+                #text3, #text2
+                {
+                    display: none;
+                }
+
+                p
+                {
+                    margin: 0;
+                }
+
+                #h1
+                {
+                    font-size: 25px;
+                    @include font;
+                }
+                #h2
+                {
+                    font-size: 20px;
+                    @include font;
+                }
+                #learnMore
+                {
+                    @include shapeOnBlue;
+                }
+                #learnMore:hover
+                {
+                    @include hoverOnBlue;
+                }
+            }
+
+            #picture
+            {
+                width: 50%;
+                height: 100%;
+                border-left: 3px solid $northernSky;
+                border-bottom: 3px solid $northernSky;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                #pictures
+                {
+                    position: relative;
+                    width: 65%;
+                    height: 90%;
+                    position: relative;
+                    background-color: $white;
+                    box-shadow: inset 0px 0px 12px 15px rgba(36,96,167,1);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    
+                    #leftBorder, #rightBorder
+                    {
+                        position: absolute;
+                        width: 15%;
+                        height: 100%;
+                    }
+
+                    #leftBorder
+                    {
+                        z-index: 1;
+                        left: 0px;
+                        background: linear-gradient(90deg, rgba(36,96,167,1) 0%, rgba(255,255,255,0) 100%);
+                    }
+
+                    #rightBorder
+                    {
+                        z-index: 1;
+                        right: 0px;
+                        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(36,96,167,1) 100%);
+                    }
+
+                    #picture1, #picture2, #picture3
+                    {
+                        position: absolute;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    /*#picture2, #picture3{
+                        display: none;
+                    }*/
+
+                    #p1, #p2, #p3
+                    {
+                        transition: 2s;
+                        position: relative;
+                    }
+
+                    #circles
+                    {
+                        position: absolute;
+                        bottom: 8%;
+                        display: flex;
+                        justify-content: space-around;
+                        width: 15%;
+
+                        #circle1, #circle2, #circle3
+                        {
+                            width: 5px;
+                            height: 5px;
+                            border: 1px solid black;
+                            border-radius: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        #otherHalf
+        {
+            display: flex;
+            width: 100%;
+            height: 30%;
+            #OH1part
+            {
+                width: 33.33%;
+                height: 100%;
+                @include font;
+                font-size: 20px;
+                color: $babyBlue;
+                border-right: 3px solid $northernSky;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #OH2part
+            {
+                border-right: 3px solid $northernSky;
+                width: 33.33%;
+                height: 100%;
+                @include font;
+                font-size: 20px;
+                color: $babyBlue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #OH3part
+            {
+                border-top: 3px solid $northernSky;
+                width: 33.4%;
+                height: 100%;
+                @include font;
+                font-size: 20px;
+                color: $babyBlue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .circle2
+            {
+                width: 70%;
+                height: 70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: 1s;
+            }
+
+            .circle2:hover
+            {
+                filter: opacity(.75);
+                background-color: $coffee;
+                color: $deepBlue;
+                border-radius: 10px;
+            }
+
+            .paddingOHPart
+            {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -62,23 +62,6 @@ export class MenuComponent implements OnInit {
         "":""
     }
 
-    borderBtnLogin1:object
-    borderBtnLogin2:object
-    borderBtnLogin3:object
-    borderBtnLogin4:object
-    borderBtnLogin5:object
-    
-    borderBtnSignup1:object
-    borderBtnSignup2:object
-    borderBtnSignup3:object
-    borderBtnSignup4:object
-    borderBtnSignup5:object
-
-    loginSignupHide={
-        "animation-name":"",
-        "display":"none"
-    }
-
     hideShowJustMenu:object
 
     constructor() { }
@@ -198,70 +181,6 @@ export class MenuComponent implements OnInit {
                 this.menuMultimedia=this.menuHide
                 break;
             }
-        }
-    }
-
-    showBorder(nameBtn:string){
-        if(nameBtn=='login'){
-            this.borderBtnLogin1={
-                "animation-name":"anTopRight",
-                "display":"block"
-            }
-            this.borderBtnLogin2={
-                "animation-name":"anTop",
-                "display":"block"
-            }
-            this.borderBtnLogin3={
-                "animation-name":"anRight",
-                "display":"block"
-            }
-            this.borderBtnLogin4={
-                "animation-name":"anBottom",
-                "display":"block"
-            }
-            this.borderBtnLogin5={
-                "animation-name":"anLeft",
-                "display":"block"
-            }
-        }
-        else{
-            this.borderBtnSignup1={
-                "animation-name":"anTopRight",
-                "display":"block"
-            }
-            this.borderBtnSignup2={
-                "animation-name":"anTop",
-                "display":"block"
-            }
-            this.borderBtnSignup3={
-                "animation-name":"anRight",
-                "display":"block"
-            }
-            this.borderBtnSignup4={
-                "animation-name":"anBottom",
-                "display":"block"
-            }
-            this.borderBtnSignup5={
-                "animation-name":"anLeft",
-                "display":"block"
-            }
-        }
-    }
-
-    hideBorder(nameBtn:string){
-        if(nameBtn=='login'){
-            this.borderBtnLogin1=this.loginSignupHide
-            this.borderBtnLogin2=this.loginSignupHide
-            this.borderBtnLogin3=this.loginSignupHide
-            this.borderBtnLogin4=this.loginSignupHide
-            this.borderBtnLogin5=this.loginSignupHide
-        }
-        else{
-            this.borderBtnSignup1=this.loginSignupHide
-            this.borderBtnSignup2=this.loginSignupHide
-            this.borderBtnSignup3=this.loginSignupHide
-            this.borderBtnSignup4=this.loginSignupHide
-            this.borderBtnSignup5=this.loginSignupHide
         }
     }
 

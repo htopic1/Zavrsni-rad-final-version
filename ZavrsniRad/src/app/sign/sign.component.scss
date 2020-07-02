@@ -1,0 +1,19 @@
+@import '../scss-components/scss-variables';
+@import '../scss-components/scss-mixins';
+
+#sign
+{
+    width: 100%;
+    background-color: $deepBlue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #signText
+    {
+        padding: 50px;
+        @include font;
+        font-size: 13px;
+        color: $babyBlue;
+    }
+}

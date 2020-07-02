@@ -1,0 +1,35 @@
+<div id="login" (click)="showLogin()" (museover)="showBorder()" (mouseleave)="hideBorder()">
+    <div id="animationTopRight" [ngStyle]="borderBtnLogin1"></div>
+    <div id="animationTop" [ngStyle]="borderBtnLogin2"></div>
+    <div id="animationRight" [ngStyle]="borderBtnLogin3"></div>
+    <div id="animationBottom" [ngStyle]="borderBtnLogin4"></div>
+    <div id="animationLeft" [ngStyle]="borderBtnLogin5"></div>
+    Log in
+</div>
+
+<div id="darkCurtain" [ngStyle]="login"></div>
+<div id="loginPage" [ngStyle]="login">
+    <div id="loginUser">
+        <div id="firstPart">
+            <div id="img"><img width="90px" src="../../../assets/logo.png" alt=""></div><br>
+            <div>Harry moby shop</div>
+        </div>
+        <div id="secondPart">
+            <div id="content">
+                <div id="title">LOG IN</div><br>
+                <div class="typeInformation">EMAIL:</div>
+                <div class="input">
+                    <input type="email" placeholder="Type your email">
+                </div><br>
+                <div class="typeInformation">PASSWORD:</div>
+                <div class="input">
+                    <input type="password" placeholder="Type your password">
+                </div><br><br>
+                <div id="buttons">
+                    <div id="loginBtn2">Log In</div>
+                    <div id="cancle" (click)="hideLogin()">NAZAD</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

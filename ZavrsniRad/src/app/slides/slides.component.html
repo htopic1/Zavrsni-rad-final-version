@@ -1,0 +1,66 @@
+<div id="slides">
+    <div id="slide">
+        <div id="upperHalf">
+            <div id="text">
+                <div id="text1" [ngStyle]="text1">
+                    <p id="h1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quidem nobis aliquid minus incidunt molestiae perferendis iure et ratione enim.</p><br>
+                    <p id="h2">Lorem ipsum dolor sit amet.</p><br>
+                    <div id="learnMore">Learn more</div>
+                </div>
+                <div id="text2" [ngStyle]="text2">
+                    <p id="h1">Lorem ipsum dolor sit amet.</p><br>
+                    <p id="h2">Lorem ipsum dolor sit amet.</p><br>
+                    <div id="learnMore">Learn more</div>
+                </div>
+                <div id="text3" [ngStyle]="text3">
+                    <p id="h1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br>
+                    <p id="h2">Lorem ipsum dolor sit amet.</p><br>
+                    <div id="learnMore">Learn more</div>
+                </div>
+            </div>
+            <div id="picture">
+                <div id="pictures">
+                    <div id="leftBorder"></div>
+                    <div id="picture1">
+                        <img id="p1" [ngStyle]="p1" width="75%" [src]="picture1">
+                    </div>
+                    <div id="picture2">
+                        <img id="p2" [ngStyle]="p2" width="75%" [src]="picture2">
+                    </div>
+                    <div id="picture3">
+                        <img id="p3" [ngStyle]="p3" width="75%" [src]="picture3">
+                    </div>
+                    <div id="rightBorder"></div>
+                    <div id="circles">
+                        <div id="circle1" [ngStyle]="c1"></div>
+                        <div id="circle2" [ngStyle]="c2"></div>
+                        <div id="circle3" [ngStyle]="c3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="otherHalf">
+            <div id="OH1part">
+                <div class="circle2" [ngStyle]="c21" (click)="change('first')"><!---->
+                    <div class="paddingOHPart" >
+                        <div>SAMSUNG<br>S7 EDGE</div>
+                    </div>
+                </div>
+            </div>
+            <div id="OH2part">
+                <div class="circle2" [ngStyle]="c22" (click)="change('second')"><!---->
+                    <div class="paddingOHPart">
+                        <div>LG<br>K11</div>
+                    </div>
+                </div>
+            </div>
+            <div id="OH3part">
+                <div class="circle2" [ngStyle]="c23" (click)="change('third')"><!---->
+                    <div class="paddingOHPart">
+                        <div>LG<br>K11</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
