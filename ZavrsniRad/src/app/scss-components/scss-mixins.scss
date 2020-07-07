@@ -101,13 +101,19 @@
     cursor: pointer;
     //@include animationForButtons
 }
+@mixin hoverOnBlue {
+    border: 3px solid $northernSky;
+    transition: .5s;
+    color: $deepBlue;
+    background-color: $coffee;
+}
+//not used so far!!!
 @mixin hoverBabyBlue {
     border: 3px solid $deepBlue;
     transition: .5s;
     color: $deepBlue;
     background-color: $coffee;
 }
-//not used so far!!!
 @mixin shapeBabyBlue {
     position: relative;
     margin-top: 15%;
@@ -124,12 +130,7 @@
     cursor: pointer;
     //@include animationForButtons
 }
-@mixin hoverOnBlue {
-    border: 3px solid $northernSky;
-    transition: .5s;
-    color: $deepBlue;
-    background-color: $coffee;
-}
+
 
 //input
 @mixin typeInformation {

@@ -51,9 +51,14 @@ export class SlidesComponent implements OnInit, AfterViewInit {
     clearT6:any=""
     clearT7:any=""
     clearT8:any=""
+    clearT9:any=""
+    clearT10:any=""
+    clearT11:any=""
+    clearT12:any=""
+
+    isActive:boolean=false;
 
     constructor(private http:HttpClient) { }
-    
 
     ngAfterViewInit(): void {
         this.slideShowText()
@@ -102,6 +107,7 @@ export class SlidesComponent implements OnInit, AfterViewInit {
                 "transition":"2s"
             }
             this.clearT2=setTimeout(() => {
+                this.isActive=false
                 this.p1={
                     "width":"0%",
                     "right":"-100%",
@@ -156,17 +162,18 @@ export class SlidesComponent implements OnInit, AfterViewInit {
             }, 3000);
         }, 5000);
 
-        setInterval(this.slideShowMobiles, 24000);
+        this.clearT9=setInterval(this.slideShowMobiles, 24000);
     }
 
     slideShowText(){
+        //this.reset()
         this.c23={"":""}
         this.c21={
             "border":"3px solid #85B3D1FF",
             "border-radius":"10px"
         }
         this.text3={"display":"none"}
-        this.text1={"display":"block"}
+        this.text1={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
         this.picture1=this.pictures1[0]
         this.picture2=this.pictures1[1]
         this.picture3=this.pictures1[2]
@@ -178,7 +185,7 @@ export class SlidesComponent implements OnInit, AfterViewInit {
                 "border-radius":"10px"
             }
             this.text1={"display":"none"}
-            this.text2={"display":"block"}
+            this.text2={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
             this.picture1=this.pictures2[0]
             this.picture2=this.pictures2[1]
             this.picture3=this.pictures2[2]
@@ -190,134 +197,129 @@ export class SlidesComponent implements OnInit, AfterViewInit {
                     "border-radius":"10px"
                 }
                 this.text2={"display":"none"}
-                this.text3={"display":"block"}
+                this.text3={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
                 
-                this.picture1=this.pictures2[0]
-                this.picture2=this.pictures2[1]
-                this.picture3=this.pictures2[2]
+                this.picture1=this.pictures3[0]
+                this.picture2=this.pictures3[1]
+                this.picture3=this.pictures3[2]
                 this.slideShowMobiles()
             }, 24000);
         }, 24000);
     }
 
     change(name){
-        clearInterval(this.clear)
-        clearInterval(this.clearT1)
-        clearInterval(this.clearT2)
-        clearInterval(this.clearT3)
-        clearInterval(this.clearT4)
-        clearInterval(this.clearT5)
-        clearInterval(this.clearT6)
-        clearInterval(this.clearT7)
-        clearInterval(this.clearT8)
-        
-        switch(name){
-            case('first'):{
-                this.p1={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p2={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p3={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.c21={
-                    "border":"3px solid #85B3D1FF",
-                    "border-radius":"10px"
-                }
-                this.c22={"":""}
-                this.c23={"":""}
-                this.picture1=this.pictures1[0]
-                this.picture2=this.pictures1[1]
-                this.picture3=this.pictures1[2]
-                this.c1={"background-color":"white"}
-                this.c2={"background-color":"white"}
-                this.c3={"background-color":"white"}
-                this.slideShowMobiles()
-                setTimeout(() => {
-                    this.c21={"":""}
-                    this.slideShowText()
-                    this.clear=setInterval(() => {
-                        this.slideShowText()
-                    }, 72000);
-                }, 24000);
-                
-                break;
-            }
-            case('second'):{
-                this.p1={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p2={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p3={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.c22={
-                    "border":"3px solid #85B3D1FF",
-                    "border-radius":"10px"
-                }
-                this.c23={"":""}
-                this.c21={"":""}
-                this.picture1=this.pictures2[0]
-                this.picture2=this.pictures2[1]
-                this.picture3=this.pictures2[2]
-                this.c1={"background-color":"white"}
-                this.c2={"background-color":"white"}
-                this.c3={"background-color":"white"}
-                this.slideShowMobiles()
-                setTimeout(() => {
+        if(this.isActive==false)
+        {
+            this.reset()
+            this.isActive=true
+            
+            switch(name){
+                case('first'):{
+                    this.text1={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
+                    this.c21={
+                        "border":"3px solid #85B3D1FF",
+                        "border-radius":"10px"
+                    }
                     this.c22={"":""}
-                    this.slideShowText()
-                    this.clear=setInterval(() => {
-                        this.slideShowText()
-                    }, 72000);
-                }, 24000);
-                break;
-            }
-            case('third'):{
-                this.p1={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p2={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.p3={
-                    "width":"0%",
-                    "right":"-100%"
-                }
-                this.c23={
-                    "border":"3px solid #85B3D1FF",
-                    "border-radius":"10px"
-                }
-                this.c21={"":""}
-                this.c22={"":""}
-                this.picture1=this.pictures3[0]
-                this.picture2=this.pictures3[1]
-                this.picture3=this.pictures3[2]
-                this.c1={"background-color":"white"}
-                this.c2={"background-color":"white"}
-                this.c3={"background-color":"white"}
-                this.slideShowMobiles()
-                setTimeout(() => {
                     this.c23={"":""}
-                    this.slideShowText()
-                    this.clear=setInterval(() => {
+                    this.picture1=this.pictures1[0]
+                    this.picture2=this.pictures1[1]
+                    this.picture3=this.pictures1[2]
+                    this.slideShowMobiles()
+                    this.clearT10=setTimeout(() => {
+                        this.c21={"":""}
                         this.slideShowText()
-                    }, 72000);
-                }, 24000);
-                break;
+                        this.clear=setInterval(() => {
+                            this.slideShowText()
+                        }, 72000);
+                    }, 24000);
+                    
+                    break;
+                }
+                case('second'):{
+                    this.text2={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
+                    this.c22={
+                        "border":"3px solid #85B3D1FF",
+                        "border-radius":"10px"
+                    }
+                    this.c23={"":""}
+                    this.c21={"":""}
+                    this.picture1=this.pictures2[0]
+                    this.picture2=this.pictures2[1]
+                    this.picture3=this.pictures2[2]
+                    this.slideShowMobiles()
+                    this.clearT11=setTimeout(() => {
+                        this.c22={"":""}
+                        this.slideShowText()
+                        this.clear=setInterval(() => {
+                            this.slideShowText()
+                        }, 72000);
+                    }, 24000);
+                    break;
+                }
+                case('third'):{
+                    this.text3={"display":"flex","flex-direction":"column","justify-content":"center","align-item":"center"}
+                    this.c23={
+                        "border":"3px solid #85B3D1FF",
+                        "border-radius":"10px"
+                    }
+                    this.c21={"":""}
+                    this.c22={"":""}
+                    this.picture1=this.pictures3[0]
+                    this.picture2=this.pictures3[1]
+                    this.picture3=this.pictures3[2]
+                    this.slideShowMobiles()
+                    this.clearT12=setTimeout(() => {
+                        this.c23={"":""}
+                        this.slideShowText()
+                        this.clear=setInterval(() => {
+                            this.slideShowText()
+                        }, 72000);
+                    }, 24000);
+                    break;
+                }
             }
         }
+    }
+
+    reset(){
+        clearInterval(this.clear)
+        clearTimeout(this.clearT1)
+        clearTimeout(this.clearT2)
+        clearTimeout(this.clearT3)
+        clearTimeout(this.clearT4)
+        clearTimeout(this.clearT5)
+        clearTimeout(this.clearT6)
+        clearTimeout(this.clearT7)
+        clearTimeout(this.clearT8)
+        clearInterval(this.clearT9)
+        clearTimeout(this.clearT10)
+        clearTimeout(this.clearT11)
+        clearTimeout(this.clearT12)
+
+        this.text1={"display":"none"}
+        this.text2={"display":"none"}
+        this.text3={"display":"none"}
+
+        this.p1={
+            "width":"0%",
+            "right":"-100%",
+            "transition":"0s"
+        }
+        this.p2={
+            "width":"0%",
+            "right":"-100%",
+            "transition":"0s"
+        }
+        this.p3={
+            "width":"0%",
+            "right":"-100%",
+            "transition":"0s"
+        }
+        
+        this.c1={"background-color":"white"}
+        this.c2={"background-color":"white"}
+        this.c3={"background-color":"white"}
+        
     }
 }

@@ -1,0 +1,76 @@
+<div id="products">
+    <div id="darkCurtainFilters"></div>
+    <div id="filters">
+        <div class="centerContent">
+            <div class="centerPandR">
+                <div class="img"><img width="20px" src="../../assets/Asset 2.png" alt=""></div>
+                <div class="borderAroundRange">
+                    <div class="center">&nbsp;&nbsp;<div><input [disabled]="off" (click)="checkRange1()" type="range" min="0" max="1500" class="range" id="range1" [(ngModel)]="range1"></div><div class="KM">{{range1}}&nbsp;KM&nbsp;&nbsp;</div></div>
+                    <div class="center">&nbsp;&nbsp;<div><input [disabled]="off" (click)="checkRange2()" type="range" min="0" max="1500" class="range" id="range2" [(ngModel)]="range2"></div><div class="KM">{{range2}}&nbsp;KM&nbsp;&nbsp;</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="centerContent">
+            <div class="centerPandR">
+                <div class="img" id="img2"><img width="20px" src="../../assets/Asset 1.png" alt=""></div>
+                <div class="borderAroundRange">
+                    <div class="center"><div>ALL<input type="checkbox" [(ngModel)]="checkbox0"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>SAMSUNG<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox1"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>LG<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox2"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>ZTE<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox3"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>LENOVO<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox4"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>HUAWEI<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox5"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>APPLE<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox6"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="center"><div>XAOMI<input [disabled]="off" type="checkbox" [(ngModel)]="checkbox7"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="centerContent">
+            <div class="centerPandR">
+                <div class="img" id="img3"><img width="20px" src="../../assets/Asset 3.png" alt=""></div>
+                <div class="borderAroundRange">
+                    <div id="select">
+                        <select [disabled]="off" name="" id="" [(ngModel)]="select">
+                            <option value="">-- / --</option>
+                            <option value="poNazivu">Po nazivu</option>
+                            <option value="poCijeni">Po cijeni</option>
+                            <option value="poStarosti">Po starosti</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="centerBtn">
+            <div id="btn" (click)="backFilters()">NAZAD</div>&nbsp;&nbsp;
+            <div id="btn" (click)="filter()">FILTRIRAJ</div>
+        </div>
+    </div>
+    <div id="productsFromSQL">
+        <div id="menuMobiles">
+            <div id="leftContent">
+                <div class="leftBtn" (mouseover)="arrowDown('najnovije')" (mouseleave)="arrowRight('najnovije')"><div [ngStyle]="downRightNajnovije"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>NAJNOVIJE</div></div>
+                <div class="leftBtn" (mouseover)="arrowDown('snizenje')" (mouseleave)="arrowRight('snizenje')"><div [ngStyle]="downRightSnizenje"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>SNIZENJE</div></div>
+                <div class="leftBtn" (mouseover)="arrowDown('sviUredjaji')" (mouseleave)="arrowRight('sviUredjaji')"><div [ngStyle]="downRightSviUredjaji"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>SVI UREDJAJI</div></div>
+            </div>
+            <div id="rightButtons">
+                <div id="searchBtn" (mouseleave)="hideInput()">
+                    <div id="hiddenInput" [ngStyle]="searchInput"><input [(ngModel)]="searchedText" type="text" placeholder="Type mobile and model"></div>
+                    <div id="img"><img (mouseover)="showInput()" (click)="getSearchedProduct()" id="search" width="20px" src="../../assets/Asset 4.png" alt=""></div>
+                </div>    
+                <div id="btn" (click)="filtersBar()">FILTERI</div>
+            </div>
+        </div>
+        <div id="mobile">
+            <div id="noMobile" [ngStyle]="noMobile">Navedenim filtriranjem nije pronadjen nijedan uredjaj!</div>
+            <div id="product" *ngFor="let item of allProducts">
+                <div id="borderLeftTop"><img width="200px" [src]="item.slika" alt=""></div>
+                <div id="borderBottomRight">
+                    <div>{{item.proizvodjac | uppercase}}&nbsp;&nbsp;{{item.model}}</div>
+                    <div>{{item['godina proizvodnje']}}</div>
+                    <div><b>{{item.cijena}} KM</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

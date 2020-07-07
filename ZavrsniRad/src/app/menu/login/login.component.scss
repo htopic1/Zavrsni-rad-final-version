@@ -23,10 +23,11 @@
 #darkCurtain
 {
     display:none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: black;
-    filter: opacity(.8);
+    filter: opacity(0);
+    transition: 1s;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -37,10 +38,10 @@
 {
     display:none;
     width: 90%;
-    height: 100%;
+    height: 100vh;
     padding: 0 5% 0 5%;
     //min-height: 450px;
-    position: fixed;
+    position: absolute;
     left: 0px;
     top: 0px;
     z-index: 2;
@@ -202,5 +203,12 @@
         width: 100%;
         height: 100vh;
         padding: 0;
+    }
+}
+
+@media only screen and (max-height:450px){
+    #loginPage
+    {
+        height: 425px;
     }
 }

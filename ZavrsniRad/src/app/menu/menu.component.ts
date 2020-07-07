@@ -8,6 +8,16 @@ import { Component, OnInit } from '@angular/core';
 
 export class MenuComponent implements OnInit {
 
+    public proba:object={
+        "background":"red"
+    };
+
+    public proba2:object={
+        "background":"black"
+    };
+
+    output:string
+
     turn90degMobile:object
     turn90degTablet:object
     turn90degMultimedia:object
@@ -46,6 +56,10 @@ export class MenuComponent implements OnInit {
     darkModeTablets:object
     darkModeMultimedia:object
 
+    menu500pxMo:object
+    menu500pxT:object
+    menu500pxMu:object
+
     menuShow:object={
         "display":"block"
     }
@@ -66,10 +80,41 @@ export class MenuComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        console.log(this.output);
+    }
+    
+    outputProbaAgain(data){
+        this.output=data
+    }
 
     arrowTurnForward(turnName:string){
+        document.getElementById('darkCurtainUnderMenu').style.display="block"
         switch(turnName){
+            case('mobiles2'):{
+                this.mobile90deg=this.turn90deg
+                this.darkModeMobiles=this.brightnessOn
+                this.menu500pxMo={
+                    "display":"block"
+                }
+                break;
+            }
+            case('tablets2'):{
+                this.tablet90deg=this.turn90deg
+                this.darkModeTablets=this.brightnessOn
+                this.menu500pxT={
+                    "display":"block"
+                }
+                break;
+            }
+            case('multimedia2'):{
+                this.multimedia90deg=this.turn90deg
+                this.darkModeMultimedia=this.brightnessOn
+                this.menu500pxMu={
+                    "display":"block"
+                }
+                break;
+            }
             case('mobiles'):{
                 this.mobile90deg=this.turn90deg
                 this.darkModeMobiles=this.brightnessOn
@@ -127,7 +172,32 @@ export class MenuComponent implements OnInit {
     }
 
     arrowTurnBack(turnName:string){
+        document.getElementById('darkCurtainUnderMenu').style.display="none"
         switch(turnName){
+            case('mobiles2'):{
+                this.mobile90deg=this.turn0deg
+                this.darkModeMobiles=this.brightnessOff
+                this.menu500pxMo={
+                    "display":"none"
+                }
+                break;
+            }
+            case('tablets2'):{
+                this.tablet90deg=this.turn0deg
+                this.darkModeTablets=this.brightnessOff
+                this.menu500pxT={
+                    "display":"none"
+                }
+                break;
+            }
+            case('multimedia2'):{
+                this.multimedia90deg=this.turn0deg
+                this.darkModeMultimedia=this.brightnessOff
+                this.menu500pxMu={
+                    "display":"none"
+                }
+                break;
+            }
             case('mobiles'):{
                 this.mobile90deg=this.turn0deg
                 this.darkModeMobiles=this.brightnessOff
@@ -186,6 +256,7 @@ export class MenuComponent implements OnInit {
 
     justMenu(name){
         if(name=='menu500pxshow'){
+            document.getElementById('darkCurtainUnderMenu').style.display="block"
             this.hideShowJustMenu={
                 "display":"block"
             }
@@ -194,6 +265,7 @@ export class MenuComponent implements OnInit {
             }
         }
         else{
+            document.getElementById('darkCurtainUnderMenu').style.display="none"
             this.hideShowJustMenu={"":""}
             this.darkMenu={
                 "filter":"brightness(1)"

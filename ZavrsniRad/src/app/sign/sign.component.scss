@@ -3,6 +3,8 @@
 
 #sign
 {
+    position: relative;
+    bottom: 0px;
     width: 100%;
     background-color: $deepBlue;
     display: flex;
@@ -11,6 +13,7 @@
 
     #signText
     {
+        text-align: center;
         padding: 50px;
         @include font;
         font-size: 13px;

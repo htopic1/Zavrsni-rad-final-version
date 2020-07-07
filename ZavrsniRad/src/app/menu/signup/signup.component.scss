@@ -1,18 +1,18 @@
 @import '../../scss-components/scss-mixins';
 @import '../../scss-components/scss-variables';
 
-#signup
+#login
 {
     @include shapeOnBlue;
     //@include animationForButtons
 }
-#signup:hover
+#login:hover
 {
     @include hoverOnBlue;
 }
 
 @media only screen and (max-width: 550px) {
-    #signup
+    #login
     {
         margin-top: 5px;
         width: 75px;
@@ -23,10 +23,11 @@
 #darkCurtain
 {
     display:none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: black;
-    filter: opacity(.8);
+    filter: opacity(0);
+    transition: 1s;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -35,17 +36,15 @@
 
 #loginPage
 {
-    width: 100%;
-    //height: 100%;
-    min-height: 450px;
-    padding: 5% 0 5% 0;
-    position: fixed;
-    //overflow: hidden;
+    display:none;
+    width: 90%;
+    height: 100vh;
+    padding: 0 5% 0 5%;
+    //min-height: 450px;
+    position: absolute;
     left: 0px;
     top: 0px;
     z-index: 2;
-    display:none;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -53,83 +52,131 @@
     {
         display: none;
     }
-    #secondPart
+
+    #loginUser
     {
-        display: flex;
-        //display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 40%;
-        height: 100%;
-        padding: 35px 0 35px 0;
-        background-color: $deepBlue;
+        width: 75%;
+        //height: 75%;
+        height: fit-content;
+        background-color: $white;
         border-radius: 10px;
-        color: $babyBlue;
-        #content
+        display: flex;
+
+        #firstPart
         {
-            width: 80%;
+            width: 40%;
             //height: 100%;
+            padding: 0 5% 0 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $deepBlue;
             color: $babyBlue;
             @include font;
-
-            .proa
-            {
-                width: 300px;
-                height: 30px
-            }
-
-            #title
-            {
-                font-size: 25px;
-            }
-
-            .typeInformation
-            {
-                @include typeInformation;
-            }
-
-            .input
-            {
-                @include inputShape;
-                input
-                {
-                    @include input;
-                }
-                @include inputPlaceholder;
-            }
-
-            #buttons
-            {
-                display: flex;
-                #loginBtn2
-                {
-                    @include shapeOnBlue;
-                }
-                #loginBtn2:hover
-                {
-                    @include hoverOnBlue;
-                }
-                #cancle
-                {
-                    @include shapeOnBlue;
-                }
-                #cancle:hover
-                {
-                    @include hoverOnBlue;
-                }
-            }
-        }
-    }
-    
-    @media only screen and (max-width:800px){
-        #secondPart
-        {
-            width: 100%;
+            font-size: 20px;
+            border-right: 3px solid $babyBlue;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
+
+            #img
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        #secondPart
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 100%;
+            padding: 0 5% 0 5%;
+            background-color: $deepBlue;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: $babyBlue;
+            #content
+            {
+                width: 80%;
+                padding: 10px 0px;
+                color: $babyBlue;
+                @include font;
+
+                #title
+                {
+                    font-size: 25px;
+                }
+
+                .typeInformation
+                {
+                    font-size: 12px;
+                    padding: 0 0 5px 3px;
+                }
+
+                .input
+                {
+                    padding: 5px;
+                    border: 3px solid $babyBlue;
+                    color: $babyBlue;
+                    border-radius: 10px;
+                    position: relative;
+                    //@include animationForButtons;
+
+                    input
+                    {
+                        width: 100%;
+                        color: $babyBlue;
+                        background-color: $deepBlue;
+                        border: none;
+                        outline: none;
+                    }
+                    ::placeholder
+                    {
+                        color: $babyBlue;
+                    }
+                }
+                #buttons
+                {
+                    display: flex;
+                    #loginBtn2
+                    {
+                        @include shapeOnBlue;
+                    }
+                    #loginBtn2:hover
+                    {
+                        @include hoverOnBlue;
+                    }
+                    #cancle
+                    {
+                        @include shapeOnBlue;
+                    }
+                    #cancle:hover
+                    {
+                        @include hoverOnBlue;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width:800px){
+            #firstPart
+            {
+                display: none;
+            }
+            #secondPart
+            {
+                width: 100%;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
         }
     }
+
     @media only screen and (min-width:1366px){
         #loginUser
         {
@@ -140,8 +187,7 @@
         #loginUser
         {
             width: 100%;
-            //height: 100%;
-            height: fit-content;
+            height: 100%;
             #secondPart
             {
                 border-top-right-radius: 0px;
@@ -157,6 +203,14 @@
     #loginPage
     {
         width: 100%;
+        height: 100vh;
         padding: 0;
+    }
+}
+
+@media only screen and (max-height:500px){
+    #loginPage
+    {
+        height: 500px;
     }
 }

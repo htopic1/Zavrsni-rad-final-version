@@ -18,7 +18,8 @@ export class SignupComponent implements OnInit {
         "display":"none"
     }
 
-    login:object
+    public login:object
+    public darkCurtainOpacity:object
 
     constructor() { }
 
@@ -55,17 +56,40 @@ export class SignupComponent implements OnInit {
     }
 
     showLogin(){
-        this.login={
+        document.body.style.overflowY='scroll';
+        this.darkCurtainOpacity={
             "display":"flex"
         }
+        setTimeout(()=>{
+            this.darkCurtainOpacity={
+                "filter":"opacity(1)",
+                "display":"flex"
+            }
+            setTimeout(()=>{
+                this.login={
+                    "display":"flex"
+                }
+                //this.outputHideMenu()
+                //console.log('haris')
+            },1000)
+        },500)
     }
     hideLogin(){
+        document.body.style.overflowY='scroll';
         this.login={
             "display":"none"
         }
-    }
-
-    signup(){
-        
+        //this.outputHideMenu()
+        setTimeout(() => {
+            this.darkCurtainOpacity={
+                "filter":"opacity(0)",
+                "display":"flex"
+            }
+            setTimeout(()=>{
+                this.darkCurtainOpacity={
+                    "display":"none"
+                }
+            },1000)
+        },500);
     }
 }

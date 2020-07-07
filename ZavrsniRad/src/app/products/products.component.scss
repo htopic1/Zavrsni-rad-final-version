@@ -1,0 +1,290 @@
+@import '../scss-components/scss-mixins';
+@import '../scss-components/scss-variables';
+
+#products
+{
+    #darkCurtainFilters
+    {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 19;
+        background-color: black;
+        opacity: .8;
+        transition: 2s;
+    }
+
+    #filters
+    {
+        @include font;
+        width: 350px;
+        height: 100vh;
+        position: fixed;
+        left: -100%;
+        top: 0px;
+        z-index: 20;
+        padding: 10px 0;
+        background-color: $deepBlue;
+        color: $babyBlue;
+        border-bottom: 3px solid $northernSky;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 2s;
+
+        .centerContent
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .centerPandR
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 0;
+                border: 1px solid $northernSky;
+
+                .img
+                {
+                    //border: 1px solid $northernSky;
+                    border-right: 1px solid $northernSky;
+                    padding: 10px;
+                }
+
+                #img2
+                {
+                    padding: 50px 10px;
+                }
+                
+                #img3
+                {
+                    padding: 10px;
+                }
+
+                .borderAroundRange
+                {
+                    //border: 1px solid $northernSky;
+
+                    .center
+                    {
+                        width: 226px;
+                        display: flex;
+                        justify-content: flex-end;
+                        
+                        .range
+                        {
+                            width: 140px;
+                            float: left;
+                        }
+
+                        .KM
+                        {
+                            float: right;
+                            width: 75px;
+                            text-align: end;
+                        }
+                    }
+
+                    #select
+                    {
+                        width: 198px;
+                        display: flex;
+                        padding: 14px;
+                        justify-content: center;
+
+                        select{
+                            width: 150px;
+                        }
+                    }
+                }
+            }    
+        }
+
+        .centerBtn
+        {
+            display: flex;
+
+            #btn
+            {
+                @include shapeOnBlue
+            }
+
+            #btn:hover
+            {
+                @include hoverOnBlue
+            }
+        }
+
+        
+    }
+
+    #productsFromSQL
+    {
+
+        #menuMobiles
+        {
+            background-color: $deepBlue;
+            color: $babyBlue;
+            padding: 10px 0;
+            overflow: hidden;
+
+            #leftContent
+            {
+                width: fit-content;
+                height: 70px;
+                float: left;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .leftBtn
+                {
+                    height: 70px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 25px;
+                    @include font;
+                    font-size: 19px;
+                    cursor: pointer;
+                }
+
+                .leftBtn:hover
+                {
+                    filter: brightness(.8);
+                }
+            }
+
+            #rightButtons
+            {
+                width: fit-content;
+                height: 70px;
+                float: right;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                #searchBtn
+                {
+                    position: relative;
+                    width: 35px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 3px solid $northernSky;
+                    border-radius: 10px;
+                    margin-right: 15px;
+                    z-index: 5;
+
+                    #img
+                    {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        z-index: 5;
+                        background-color: $deepBlue;
+                        border: 3px solid $northernSky;
+                        border-radius: 10px;
+                        cursor: pointer;
+                    }
+
+                    #hiddenInput
+                    {
+                        width: 35px;
+                        height: 35px;
+                        border: 3px solid $northernSky;
+                        border-radius: 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        top: -8%;
+                        left: -8%;
+                        z-index: 4;
+                        transition: 1.5s;
+
+                        input
+                        {
+                            width: 80%;
+                            height: 20px;
+                            font-size: 15px;
+                            color: $babyBlue;
+                            background-color: $deepBlue;
+                            border: none;
+                            outline: none;
+                        }
+
+                        input::placeholder
+                        {
+                            color: $babyBlue;
+                        }
+                    }
+                }
+
+                #btn
+                {
+                    @include shapeOnBlue;
+                    margin-right: 15px;
+                }
+            }
+        }
+        #btn:hover
+        {
+            @include hoverOnBlue
+        }
+
+        #mobile
+        {
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            @include font;
+            text-align: center;
+
+            #noMobile
+            {
+                display: none;
+                color: $babyBlue;
+                font-size: 35px;
+            }
+
+            #product
+            {
+                padding: 20px;
+                //transition: 1s;
+                //display: flex;
+                //flex-wrap: wrap;
+
+                //#createdProduct
+                //{
+                    #borderLeftTop
+                    {
+                        border-top: 1px solid $northernSky;
+                        border-left: 1px solid $northernSky;
+                    }
+
+                    #borderBottomRight
+                    {
+                        width: 100%;
+                        padding: 10px 0;
+                        border-bottom: 1px solid $northernSky;
+                        border-right: 1px solid $northernSky;
+                    }
+                //} 
+            }
+        }
+    }
+}
