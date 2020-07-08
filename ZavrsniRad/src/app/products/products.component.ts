@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
     select:any
 
     noMobile:object;
+    noSearch:object;
 
     downRightNajnovije:object
     downRightSnizenje:object
@@ -34,10 +35,11 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
     searchInput:object;
     off:boolean;
-    searchedText:string;
+    searchedText:string="";
+    halfLoading:object;
 
     constructor(private http:HttpClient) {
-        this.getAllProducts()
+        this.showContent("")
         setInterval(()=>{
             this.disable()
         },0)
@@ -49,8 +51,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
     showInput(){
         this.searchInput={
-            "width":"200px",
-            "left":"-560%"
+            "width":"250px",
+            "left":"-700%"
         }
     }
 
@@ -58,40 +60,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
         this.searchInput={
             "width":"35px",
             "left":"-8%"
-        }
-    }
-
-    arrowDown(name:string):void{
-        switch(name){
-            case('najnovije'):{
-                this.downRightNajnovije=this.turn90deg
-                break;
-            }
-            case('snizenje'):{
-                this.downRightSnizenje=this.turn90deg
-                break;
-            }
-            case('sviUredjaji'):{
-                this.downRightSviUredjaji=this.turn90deg
-                break;
-            }
-        }
-    }
-
-    arrowRight(name:string):void{
-        switch(name){
-            case('najnovije'):{
-                this.downRightNajnovije=this.turn0deg
-                break;
-            }
-            case('snizenje'):{
-                this.downRightSnizenje=this.turn0deg
-                break;
-            }
-            case('sviUredjaji'):{
-                this.downRightSviUredjaji=this.turn0deg
-                break;
-            }
         }
     }
 
@@ -127,7 +95,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
     disable():void{
         (this.checkbox0==true) ? this.off=true:this.off=false
-
     }
 
     filter():void{
@@ -261,35 +228,144 @@ export class ProductComponent implements OnInit, AfterViewInit {
         },2000)
     }
 
-    getAllProducts():void{
-        const url='http://localhost:4000/getAllUser'
-        this.http.get<any>(url).subscribe(response=>{
-            //console.log(response);
-            this.allProducts=response;
-            this.savedAllProducts=response
-            //console.log(typeof(this.allProducts));
-            //console.log(this.allProducts[0].slika);
-            //this.createProductShape()
-        })
-    }
-
     getSearchedProduct():void{
-        let searchedText2:string[]=this.searchedText.split(' ')
-        console.log(searchedText2);
         
-        const URL='http://localhost:4000/getSearchedProduct/?proizvodjac='+searchedText2[0]+'&model='+searchedText2[1]+'';
-        this.http.get(URL).subscribe(response=>{
-            this.allProducts=response
-            console.log(typeof(this.allProducts));
-            
-        })
-
-        if((this.allProducts).length==0)
-        this.noMobile={
-            "display":"block"
+        this.allProducts=[]
+        let allProducts2:any=[]
+        
+        this.noSearch={
+            "display":"none"
         }
+
+        this.halfLoading={
+            "display":"flex"
+        }
+
+        if(this.searchedText==""){
+            this.noSearch={
+                "display":"block"
+            }
+            this.halfLoading={
+                "display":"none"
+            }
+        }
+        else{
+            if(this.searchedText.trim().includes(" ")){
+                let searchedText2:any=this.searchedText.trim().split(' ')
+                if(searchedText2.length==2){
+                    const URL='http://localhost:4000/getSearchedProduct/?proizvodjac='+searchedText2[0]+'&model='+searchedText2[(searchedText2.length)-1]+'';
+                    this.http.get(URL).subscribe(response=>{
+                        allProducts2=response
+                        if((allProducts2).length==0){
+                            this.noSearch={
+                                "display":"block"
+                            }
+                            this.halfLoading={
+                                "display":"none"
+                            }
+                        }
+                    })
+                }
+                else
+                {
+                    this.noSearch={
+                        "display":"block"
+                    }
+                    this.halfLoading={
+                        "display":"none"
+                    }
+                }
+            }
+            else
+            {
+                this.noSearch={
+                    "display":"block"
+                }
+                this.halfLoading={
+                    "display":"none"
+                }
+            }
+        }
+        setTimeout(() => {
+            this.halfLoading={
+                "display":"none"
+            }
+            this.allProducts=allProducts2
+        }, 4000);
     }
     
+    showContent(name:string)
+    { 
+        this.halfLoading={
+            "display":"flex"
+        }
+        this.allProducts=[]
+
+        switch(name){
+            case('najnovije'):{
+                this.downRightNajnovije=this.turn90deg
+                this.downRightSnizenje=this.turn0deg
+                this.downRightSviUredjaji=this.turn0deg
+                const URL='http://localhost:4000/getProductsOnAction'
+                
+                setTimeout(() => {
+                    this.halfLoading={
+                        "display":"none"
+                    }
+                    this.http.get(URL).subscribe(response=>{
+                        this.allProducts=response
+                    })
+                }, 4000);
+                break;
+            }
+            case('snizenje'):{
+                this.downRightNajnovije=this.turn0deg
+                this.downRightSnizenje=this.turn90deg
+                this.downRightSviUredjaji=this.turn0deg
+                const URL='http://localhost:4000/getProductsOnNewest'
+                setTimeout(() => {
+                    this.halfLoading={
+                        "display":"none"
+                    }
+                    this.http.get(URL).subscribe(response=>{
+                        this.allProducts=response
+                    })
+                }, 4000);
+                break;
+            }
+            case('sviUredjaji'):{
+                this.downRightNajnovije=this.turn0deg
+                this.downRightSnizenje=this.turn0deg
+                this.downRightSviUredjaji=this.turn90deg
+                const URL='http://localhost:4000/getAllUser'
+                setTimeout(() => {
+                    this.halfLoading={
+                        "display":"none"
+                    }
+                    this.http.get(URL).subscribe(response=>{
+                        this.allProducts=response
+                    })
+                }, 4000);
+                break;
+            }
+            default:{
+                this.downRightNajnovije=this.turn0deg
+                this.downRightSnizenje=this.turn0deg
+                this.downRightSviUredjaji=this.turn90deg
+                const URL='http://localhost:4000/getAllUser'
+                setTimeout(() => {
+                    this.halfLoading={
+                        "display":"none"
+                    }
+                    this.http.get(URL).subscribe(response=>{
+                        this.allProducts=response
+                    })
+                }, 4000);
+                break;
+            }
+        }
+    }
+
     /*createProductShape():void{
         for(let i=0;i<(this.allProducts).length;i++){
 

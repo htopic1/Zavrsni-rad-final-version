@@ -132,7 +132,7 @@
 }
 
 
-//input
+//input - not used
 @mixin typeInformation {
     font-size: 12px;
     padding: 0 0 5px 3px;
@@ -165,5 +165,74 @@
     ::placeholder
     {
         color: $babyBlue;
+    }
+}
+
+
+//loading
+@mixin halfLoading{
+    #circles
+    {
+        display: flex;
+        position: relative;
+        width: 175px;
+    
+        .circle
+        {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 0px;
+            border-radius: 100%;
+            background-color: $northernSky;
+        }
+        #first
+        {
+            animation: 3s infinite .2s circleAnimation;
+        }
+        #second
+        {
+            animation: 3s infinite .4s circleAnimation;
+        }
+        #third
+        {
+            animation: 3s infinite .6s circleAnimation;
+        }
+        #fourth
+        {
+            animation: 3s infinite .8s circleAnimation;
+        }
+        #fifth
+        {
+            animation: 3s infinite 1s circleAnimation;
+        }
+        #sixth
+        {
+            animation: 3s infinite 1.2s circleAnimation;
+        }
+        /*#seventh
+        {
+            animation: 3s infinite 1.4s circleAnimation;
+        }
+        #eighth
+        {
+            animation: 3s infinite 1.6s circleAnimation;
+        }
+        #nineth
+        {
+            animation: 3s infinite 1.8s circleAnimation;
+        }
+        #tenth
+        {
+            animation: 3s infinite 2s circleAnimation;
+        }*/
+
+        @keyframes circleAnimation
+        {
+            0% {left: 0%;}
+            30% {left: 100%;}
+            60% {left: 0%;}
+            100% {left: 0%;}
+        }
     }
 }

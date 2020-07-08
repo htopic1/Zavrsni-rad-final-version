@@ -49,20 +49,40 @@
     <div id="productsFromSQL">
         <div id="menuMobiles">
             <div id="leftContent">
-                <div class="leftBtn" (mouseover)="arrowDown('najnovije')" (mouseleave)="arrowRight('najnovije')"><div [ngStyle]="downRightNajnovije"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>NAJNOVIJE</div></div>
-                <div class="leftBtn" (mouseover)="arrowDown('snizenje')" (mouseleave)="arrowRight('snizenje')"><div [ngStyle]="downRightSnizenje"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>SNIZENJE</div></div>
-                <div class="leftBtn" (mouseover)="arrowDown('sviUredjaji')" (mouseleave)="arrowRight('sviUredjaji')"><div [ngStyle]="downRightSviUredjaji"><img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>SVI UREDJAJI</div></div>
+                <div class="leftBtn" (click)="showContent('najnovije')"><div [ngStyle]="downRightNajnovije">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;NAJNOVIJE</div></div>
+                <div class="leftBtn" (click)="showContent('snizenje')"><div [ngStyle]="downRightSnizenje">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;SNIZENJE</div></div>
+                <div class="leftBtn" (click)="showContent('sviUredjaji')"><div [ngStyle]="downRightSviUredjaji">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;SVI UREDJAJI</div></div>
             </div>
             <div id="rightButtons">
                 <div id="searchBtn" (mouseleave)="hideInput()">
-                    <div id="hiddenInput" [ngStyle]="searchInput"><input [(ngModel)]="searchedText" type="text" placeholder="Type mobile and model"></div>
-                    <div id="img"><img (mouseover)="showInput()" (click)="getSearchedProduct()" id="search" width="20px" src="../../assets/Asset 4.png" alt=""></div>
+                    <div id="hiddenInput" [ngStyle]="searchInput">
+                        <div id="help"><img width="20px" src="./../../assets/Asset 5.png" alt=""></div>
+                        <input [(ngModel)]="searchedText" type="text" placeholder="Type mobile and model">
+                    </div>
+                    <div id="img">
+                        <div id="search"><img (mouseover)="showInput()" (click)="getSearchedProduct()" width="20px" src="../../assets/Asset 4.png" alt=""></div>
+                    </div>
                 </div>    
                 <div id="btn" (click)="filtersBar()">FILTERI</div>
             </div>
         </div>
         <div id="mobile">
             <div id="noMobile" [ngStyle]="noMobile">Navedenim filtriranjem nije pronadjen nijedan uredjaj!</div>
+            <div id="noSearch" [ngStyle]="noSearch">Navedenim pretrazivanjem nije pronadjen nijedan uredjaj!</div>
+            <div id="halfLoading" [ngStyle]="halfLoading">
+                    <div id="circles">
+                        <div class="circle" id="first"></div>
+                        <div class="circle" id="second"></div>
+                        <div class="circle" id="third"></div>
+                        <div class="circle" id="fourth"></div>
+                        <div class="circle" id="fifth"></div>
+                        <div class="circle" id="sixth"></div>
+                        <!--<div class="circle" id="seventh"></div>
+                        <div class="circle" id="eighth"></div>
+                        <div class="circle" id="nineth"></div>
+                        <div class="circle" id="tenth"></div>-->
+                    </div>
+            </div>
             <div id="product" *ngFor="let item of allProducts">
                 <div id="borderLeftTop"><img width="200px" [src]="item.slika" alt=""></div>
                 <div id="borderBottomRight">

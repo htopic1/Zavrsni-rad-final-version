@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
     public login:object
     public darkCurtainOpacity:object
 
+    email:string;
+    password:string;
+
     constructor() { }
 
     ngOnInit() { }
@@ -106,6 +109,10 @@ export class LoginComponent implements OnInit {
                 }
             },1000)
         },500);
+    }
+
+    tryToLogin(){
+        
     }
 
     /*outputShowMenu(){
