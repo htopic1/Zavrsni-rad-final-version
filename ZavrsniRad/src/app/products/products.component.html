@@ -3,7 +3,7 @@
     <div id="filters">
         <div class="centerContent">
             <div class="centerPandR">
-                <div class="img"><img width="20px" src="../../assets/Asset 2.png" alt=""></div>
+                <div class="img"><img width="20px" src="../../assets/Asset 6.png" alt=""></div>
                 <div class="borderAroundRange">
                     <div class="center">&nbsp;&nbsp;<div><input [disabled]="off" (click)="checkRange1()" type="range" min="0" max="1500" class="range" id="range1" [(ngModel)]="range1"></div><div class="KM">{{range1}}&nbsp;KM&nbsp;&nbsp;</div></div>
                     <div class="center">&nbsp;&nbsp;<div><input [disabled]="off" (click)="checkRange2()" type="range" min="0" max="1500" class="range" id="range2" [(ngModel)]="range2"></div><div class="KM">{{range2}}&nbsp;KM&nbsp;&nbsp;</div></div>
@@ -49,24 +49,34 @@
     <div id="productsFromSQL">
         <div id="menuMobiles">
             <div id="leftContent">
-                <div class="leftBtn" (click)="showContent('najnovije')"><div [ngStyle]="downRightNajnovije">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;NAJNOVIJE</div></div>
-                <div class="leftBtn" (click)="showContent('snizenje')"><div [ngStyle]="downRightSnizenje">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;SNIZENJE</div></div>
-                <div class="leftBtn" (click)="showContent('sviUredjaji')"><div [ngStyle]="downRightSviUredjaji">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div>&nbsp;SVI UREDJAJI</div></div>
+                <div class="leftBtn" (click)="showContent('najnovije')"><div [ngStyle]="downRightNajnovije">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div class="menuTypeName">&nbsp;NAJNOVIJE</div></div>
+                <div class="leftBtn" (click)="showContent('snizenje')"><div [ngStyle]="downRightSnizenje">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div class="menuTypeName">&nbsp;SNIZENJE</div></div>
+                <div class="leftBtn" (click)="showContent('sviUredjaji')"><div [ngStyle]="downRightSviUredjaji">&nbsp;<img class="arrowRight" width="20px" src="assets/arrow right.svg"></div><div class="menuTypeName">&nbsp;SVI UREDJAJI</div></div>
             </div>
             <div id="rightButtons">
                 <div id="searchBtn" (mouseleave)="hideInput()">
                     <div id="hiddenInput" [ngStyle]="searchInput">
-                        <div id="help"><img width="20px" src="./../../assets/Asset 5.png" alt=""></div>
+                        <div id="help" (mouseover)="showHelp()" (mouseleave)="leaveHelp()">
+                            <div><img width="20px" src="./../../assets/Asset 5.png" alt=""></div>
+                            <div id="helpBar" [ngStyle]="showHelpStyle"><p>Unesi naziv proizvodjaca pa model</p></div>
+                        </div>
                         <input [(ngModel)]="searchedText" type="text" placeholder="Type mobile and model">
                     </div>
-                    <div id="img">
-                        <div id="search"><img (mouseover)="showInput()" (click)="getSearchedProduct()" width="20px" src="../../assets/Asset 4.png" alt=""></div>
+                    <div id="img" (mouseover)="showInput()">
+                        <div id="search"><img (click)="getSearchedProduct()" width="20px" src="../../assets/Asset 4.png" alt=""></div>
                     </div>
                 </div>    
                 <div id="btn" (click)="filtersBar()">FILTERI</div>
             </div>
         </div>
         <div id="mobile">
+
+            <div id="aboveContent">
+                <hr><div id="inputInAboveContent">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show&nbsp;<input [(ngModel)]="stepNumber" type="number" step="1">&nbsp;per page.
+                </div><hr>
+            </div>
+
             <div id="noMobile" [ngStyle]="noMobile">Navedenim filtriranjem nije pronadjen nijedan uredjaj!</div>
             <div id="noSearch" [ngStyle]="noSearch">Navedenim pretrazivanjem nije pronadjen nijedan uredjaj!</div>
             <div id="halfLoading" [ngStyle]="halfLoading">
@@ -83,14 +93,42 @@
                         <div class="circle" id="tenth"></div>-->
                     </div>
             </div>
-            <div id="product" *ngFor="let item of allProducts">
-                <div id="borderLeftTop"><img width="200px" [src]="item.slika" alt=""></div>
-                <div id="borderBottomRight">
-                    <div>{{item.proizvodjac | uppercase}}&nbsp;&nbsp;{{item.model}}</div>
-                    <div>{{item['godina proizvodnje']}}</div>
-                    <div><b>{{item.cijena}} KM</b></div>
+
+                <div id="product" *ngFor="let item of allProducts; let i = index" [attr.data-index]="i">
+                    <div id="padding">
+                        <div id="upMenu">
+                            <div id="newOrAction" *ngIf="item.najnovije==1 || item.naAkciji==1">
+                                <div id="new" *ngIf="item.najnovije==1" [ngStyle]="{'display':'block'}">NEW</div>
+                                <div id="action" *ngIf="item.naAkciji==1" [ngStyle]="{'display':'block'}">SNIZENJE</div>
+                            </div>
+                            <div id="mainPicture" (mouseleave)="hidePokazi(i)">
+                                <img (mouseover)="showPokazi(i)" width="200px" [src]="item.slika" alt="">
+                                <div [ngClass]="{mainPictureContent: hasErrorArray[i],mainPictureContent2: !hasErrorArray[i]}">POKAZI</div><!-- [ngStyle]="pokazi"-->
+                            </div>
+                        </div>
+                        <div id="downMenu">
+                            <div id="mobileData">
+                                <div>{{item.proizvodjac | uppercase}}&nbsp;&nbsp;{{item.model}}</div>
+                                <div>{{item['godina proizvodnje']}}</div>
+                                <div *ngIf="item.naAkciji==1"><span id="lineThrough">{{item['stara cijena']}} KM</span>&nbsp;&nbsp;<b>{{item.cijena}} KM</b></div>
+                                <div *ngIf="item.naAkciji==0"><b>{{item.cijena}} KM</b></div>
+                            </div>
+                            <div id="cart">
+                                <div id="cartImg"><img width="20px" src="../../assets/Asset 2.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
+
+            <div id="beloveContent">
+                <hr><div id="inBeloveContent" *ngfor="let item2 of stepNumber"><!-- *ngIf="stepNumber!=0"-->
+                    <div class="pages">
+                        <div>{{item2}}</div>
+                    </div>
+                </div><hr>
             </div>
+
         </div>
     </div>
 </div>

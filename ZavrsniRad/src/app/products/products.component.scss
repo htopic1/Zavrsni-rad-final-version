@@ -158,11 +158,17 @@
                     font-size: 19px;
                     cursor: pointer;
                     //margin: 10px 0;
+
+                    //.menuTypeName:hover
+                    //{
+                    //    border-bottom: 1px solid;
+                    //}
                 }
 
                 .leftBtn:hover
                 {
                     filter: brightness(.8);
+                    
                 }
             }
 
@@ -231,6 +237,34 @@
                             border-radius: 10px;
                             position: absolute;
                             left: -3px;
+
+                            #helpBar
+                            {
+                                position: absolute;
+                                z-index: 10;
+                                top: 111%;
+                                left: -3px;
+                                height: 21px;
+                                width: 0px;
+                                text-align: center;
+                                border-radius: 10px;
+                                transition: .5s;
+                                overflow: hidden;
+                                color: $deepBlue;
+                                background-color: $northernSky;
+
+                                p
+                                {
+                                    background-color: $northernSky;
+                                    width: 245px;
+                                    margin: 0;
+                                }
+                            }
+                        }
+
+                        #help:hover
+                        {
+                            opacity: .8;
                         }
 
                         input
@@ -267,13 +301,14 @@
 
         #mobile
         {
-            padding: 15px;
+            margin: 15px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             @include font;
             text-align: center;
+            border: 1px solid $northernSky;
 
             #noMobile, #noSearch
             {
@@ -293,30 +328,187 @@
                 @include halfLoading
             }
 
-            #product
+            #aboveContent
             {
-                padding: 20px;
-                //transition: 1s;
-                //display: flex;
-                //flex-wrap: wrap;
+                width: 100vw;
+                margin: 0px 0 20px;
+                background-color: $deepBlue;
+                color: $northernSky;
 
-                //#createdProduct
-                //{
-                    #borderLeftTop
-                    {
-                        border-top: 1px solid $northernSky;
-                        border-left: 1px solid $northernSky;
-                    }
+                #inputInAboveContent
+                {
+                    width: fit-content;
+                }
 
-                    #borderBottomRight
-                    {
-                        width: 100%;
-                        padding: 10px 0;
-                        border-bottom: 1px solid $northernSky;
-                        border-right: 1px solid $northernSky;
-                    }
-                //} 
+                #inputInAboveContent input{
+                    width: 45px;
+                    height: 20px;
+                }
             }
+
+            #beloveContent
+            {
+                width: 100vw;
+                margin: 20px 0 0 0;
+                background-color: $deepBlue;
+                color: $northernSky;
+
+                .pages
+                {
+                    width: 20px;
+                    height: 20px;
+                    background-color: $deepBlue;
+                    color: $babyBlue;
+                }
+            }
+
+            //table
+            /*{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                border-spacing: 0;
+                td
+                {
+                    border-bottom: 1px solid;*/
+                    #product
+                    {
+                        //padding: 20px;
+                        //transition: 1s;
+                        //display: flex;
+                        //flex-wrap: wrap;
+
+                        //#createdProduct
+                        //{
+                            #padding
+                            {
+                                margin: 0 25px;
+                                #upMenu
+                                {
+                                    position: relative;
+                                    padding: 5px;
+                                    border-top: 1px solid $northernSky;
+                                    border-left: 1px solid $northernSky;
+                                    border-right: 1px solid $northernSky;
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                    //box-shadow: -10px -10px 15px 10px rgba(133,179,209,1);
+
+                                    #mainPicture
+                                    {
+                                        position: relative;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+
+                                        img{
+                                            z-index: 1;
+                                        }
+
+                                        img:hover
+                                        {
+                                            cursor: pointer;
+                                            //filter: brightness(.8);
+                                        }
+
+                                        .mainPictureContent
+                                        {
+                                            position: absolute;
+                                            z-index: 2;
+                                            width: 100%;
+                                            background-color: $deepBlue;
+                                            color: $babyBlue;
+                                            padding: 6px;
+                                            cursor:pointer;
+                                            filter: brightness(.8);
+                                        }
+
+                                        .mainPictureContent2
+                                        {
+                                            display: none;
+                                        }
+                                    }
+                                    
+                                    #newOrAction
+                                    {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        z-index: 2;
+
+                                        #new, #action{
+                                            width: fit-content;
+                                            display: none;
+                                            padding: 3px 10px;
+                                            //background-color: $deepBlue;
+                                            color: $babyBlue;
+                                            border-bottom-right-radius: 10px;
+                                            border-top-left-radius: 10px;
+                                            border-right: 1px solid;
+                                            border-bottom: 1px solid;
+                                        }
+
+                                        #new{
+                                            background-color: green;
+                                        }
+
+                                        #action{
+                                            background-color: red;
+                                        }
+                                    }
+                                }
+
+                                #downMenu
+                                {
+                                    display: flex;
+                                    #mobileData
+                                    {
+                                        width: 100%;
+                                        padding: 10px 0;
+                                        background-color: $deepBlue;
+                                        color: $babyBlue;
+                                        //border-bottom: 1px solid $northernSky;
+                                        //border-right: 1px solid $northernSky;
+                                        //box-shadow: 10px 10px 15px 10px rgba(133,179,209,1);
+
+                                        #lineThrough
+                                        {
+                                            text-decoration: line-through;
+                                        }
+                                    }
+                                    /*#borderBottomRight:hover
+                                    {
+                                        transform: scale(1.1);
+                                        translate:(-10px,10px);
+                                        margin: 0 5px 5px 0;
+                                        border-color: transparent;
+                                        //box-shadow: 10px 10px 15px 10px rgba(133,179,209,1);
+                                        transition: .5s;
+                                    }*/
+
+                                    #cart
+                                    {
+                                        background-color: $deepBlue;
+                                        color: $babyBlue;
+                                        padding: 0 10px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        border-left: 1px solid;
+                                        cursor: pointer;
+                                    }
+
+                                    #cart:hover
+                                    {
+                                        opacity: .8;
+                                    }
+                                }
+                            }
+                        //} 
+                    }
+                //}    
+            //}
         }
     }
 }

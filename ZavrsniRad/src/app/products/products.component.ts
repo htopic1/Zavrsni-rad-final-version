@@ -37,6 +37,9 @@ export class ProductComponent implements OnInit, AfterViewInit {
     off:boolean;
     searchedText:string="";
     halfLoading:object;
+    showHelpStyle:object;
+    hasErrorArray:boolean[]=[];
+    stepNumber:number=0;
 
     constructor(private http:HttpClient) {
         this.showContent("")
@@ -49,6 +52,14 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
     ngOnInit() { }
 
+    showPokazi(index:number){
+        this.hasErrorArray[index]=true
+    }
+
+    hidePokazi(index:number){
+        this.hasErrorArray[index]=false
+    }
+
     showInput(){
         this.searchInput={
             "width":"250px",
@@ -60,6 +71,24 @@ export class ProductComponent implements OnInit, AfterViewInit {
         this.searchInput={
             "width":"35px",
             "left":"-8%"
+        }
+        /*this.showHelpStyle={
+            "width":"0px",
+            "border":"none"
+        }*/
+    }
+    
+    showHelp(){
+        this.showHelpStyle={
+            "width":"245px",
+            "border":"1px solid"
+        }
+    }
+
+    leaveHelp(){
+        this.showHelpStyle={
+            "width":"0",
+            "border":"1px solid"
         }
     }
 
@@ -307,15 +336,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSnizenje=this.turn0deg
                 this.downRightSviUredjaji=this.turn0deg
                 const URL='http://localhost:4000/getProductsOnAction'
-                
-                setTimeout(() => {
-                    this.halfLoading={
-                        "display":"none"
-                    }
-                    this.http.get(URL).subscribe(response=>{
-                        this.allProducts=response
-                    })
-                }, 4000);
+                this.getProductData(URL)
+                this.assignHasErrorAndStepNumber()
                 break;
             }
             case('snizenje'):{
@@ -323,14 +345,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSnizenje=this.turn90deg
                 this.downRightSviUredjaji=this.turn0deg
                 const URL='http://localhost:4000/getProductsOnNewest'
-                setTimeout(() => {
-                    this.halfLoading={
-                        "display":"none"
-                    }
-                    this.http.get(URL).subscribe(response=>{
-                        this.allProducts=response
-                    })
-                }, 4000);
+                this.getProductData(URL)
+                this.assignHasErrorAndStepNumber()
                 break;
             }
             case('sviUredjaji'):{
@@ -338,14 +354,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSnizenje=this.turn0deg
                 this.downRightSviUredjaji=this.turn90deg
                 const URL='http://localhost:4000/getAllUser'
-                setTimeout(() => {
-                    this.halfLoading={
-                        "display":"none"
-                    }
-                    this.http.get(URL).subscribe(response=>{
-                        this.allProducts=response
-                    })
-                }, 4000);
+                this.getProductData(URL)
+                this.assignHasErrorAndStepNumber()
                 break;
             }
             default:{
@@ -353,18 +363,39 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSnizenje=this.turn0deg
                 this.downRightSviUredjaji=this.turn90deg
                 const URL='http://localhost:4000/getAllUser'
-                setTimeout(() => {
-                    this.halfLoading={
-                        "display":"none"
-                    }
-                    this.http.get(URL).subscribe(response=>{
-                        this.allProducts=response
-                    })
-                }, 4000);
+                this.getProductData(URL)
+                this.assignHasErrorAndStepNumber()
                 break;
             }
         }
     }
+
+    assignHasErrorAndStepNumber(){
+        setTimeout(() => {
+            console.log(this.stepNumber+"   daaa");
+        }, 5000);
+        console.log(this.stepNumber);
+    }
+
+    getProductData(url:string){
+        setTimeout(() => {
+            this.halfLoading={
+                "display":"none"
+            }
+            this.http.get(url).subscribe(response=>{
+                this.allProducts=response
+            })
+            
+        }, 4000);
+        setTimeout(() => {
+            for(let i=0;i<(this.allProducts).length;i++){
+                this.hasErrorArray.push(false)
+            }
+            this.stepNumber=(this.allProducts).length
+        }, 8000);
+            
+    }
+    
 
     /*createProductShape():void{
         for(let i=0;i<(this.allProducts).length;i++){
