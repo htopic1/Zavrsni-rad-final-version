@@ -316,7 +316,7 @@
                 display: none;
                 color: $babyBlue;
                 font-size: 35px;
-                margin-top: 10%;
+                margin: 10%;
             }
 
             #halfLoading{
@@ -352,13 +352,36 @@
                 margin: 20px 0 0 0;
                 background-color: $deepBlue;
                 color: $northernSky;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-                .pages
+                #inBeloveContent
                 {
-                    width: 20px;
-                    height: 20px;
-                    background-color: $deepBlue;
-                    color: $babyBlue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 0;
+                    .pages
+                    {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 20px;
+                        height: 20px;
+                        margin-left: 5px;
+                        padding: 5px;
+                        background-color: #85B3D1FF;
+                        border: 1px solid;
+                        border-radius: 5px;
+                        color: #2460A7FF;
+                        cursor: pointer;
+                    }
+
+                    .pages:hover
+                    {
+                        opacity: .8;
+                    }
                 }
             }
 

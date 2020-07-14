@@ -73,7 +73,7 @@
 
             <div id="aboveContent">
                 <hr><div id="inputInAboveContent">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show&nbsp;<input [(ngModel)]="stepNumber" type="number" step="1">&nbsp;per page.
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show&nbsp;<input [(ngModel)]="stepNumber" (change)="getContentNumber()" type="number" step="1">&nbsp;per page.
                 </div><hr>
             </div>
 
@@ -122,10 +122,8 @@
                 </div>
 
             <div id="beloveContent">
-                <hr><div id="inBeloveContent" *ngfor="let item2 of stepNumber"><!-- *ngIf="stepNumber!=0"-->
-                    <div class="pages">
-                        <div>{{item2}}</div>
-                    </div>
+                <hr><div id="inBeloveContent"><!-- *ngIf="stepNumber!=0"-->
+                    <div class="pages" *ngFor="let item2 of stepNumberArray; let i = index" [attr.data-index]="i" (click)="showContentUnderProducts(stepNumberArray[i],stepNumber)">{{i+1}}</div>
                 </div><hr>
             </div>
 

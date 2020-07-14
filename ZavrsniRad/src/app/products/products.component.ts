@@ -40,12 +40,19 @@ export class ProductComponent implements OnInit, AfterViewInit {
     showHelpStyle:object;
     hasErrorArray:boolean[]=[];
     stepNumber:number=0;
+    stepNumberArray:number[]=[]
 
     constructor(private http:HttpClient) {
         this.showContent("")
         setInterval(()=>{
             this.disable()
         },0)
+
+        /*setTimeout(()=>{
+            setInterval(()=>{
+                this.getContentNumber()
+            },0)
+        },8000)*/
     }
 
     ngAfterViewInit(): void { }
@@ -261,6 +268,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
         
         this.allProducts=[]
         let allProducts2:any=[]
+        //this.stepNumber=1
+        //this.stepNumberArray=[]
         
         this.noSearch={
             "display":"none"
@@ -321,6 +330,22 @@ export class ProductComponent implements OnInit, AfterViewInit {
             }
             this.allProducts=allProducts2
         }, 4000);
+        /*setTimeout(() => {
+            let j:number=0
+            this.stepNumberArray=[]
+            this.stepNumber=(this.allProducts).length
+            console.log((this.allProducts).length);
+            console.log(this.allProducts);
+            
+            
+            for(let i=0;i<(this.allProducts).length;i+=this.stepNumber){
+                this.hasErrorArray.push(false)
+                this.stepNumberArray.push(j+1)
+                j++
+                //console.log("stepNumber="+this.stepNumber+"   i="+i)
+            }
+            //console.log(this.stepNumberArray);
+        }, 4000);*/
     }
     
     showContent(name:string)
@@ -335,18 +360,18 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightNajnovije=this.turn90deg
                 this.downRightSnizenje=this.turn0deg
                 this.downRightSviUredjaji=this.turn0deg
-                const URL='http://localhost:4000/getProductsOnAction'
+                const URL='http://localhost:4000/getProductsOnNewest'
                 this.getProductData(URL)
-                this.assignHasErrorAndStepNumber()
+                //this.assignHasErrorAndStepNumber()
                 break;
             }
             case('snizenje'):{
                 this.downRightNajnovije=this.turn0deg
                 this.downRightSnizenje=this.turn90deg
                 this.downRightSviUredjaji=this.turn0deg
-                const URL='http://localhost:4000/getProductsOnNewest'
+                const URL='http://localhost:4000/getProductsOnAction'
                 this.getProductData(URL)
-                this.assignHasErrorAndStepNumber()
+                //this.assignHasErrorAndStepNumber()
                 break;
             }
             case('sviUredjaji'):{
@@ -355,7 +380,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSviUredjaji=this.turn90deg
                 const URL='http://localhost:4000/getAllUser'
                 this.getProductData(URL)
-                this.assignHasErrorAndStepNumber()
+                //this.assignHasErrorAndStepNumber()
                 break;
             }
             default:{
@@ -364,17 +389,10 @@ export class ProductComponent implements OnInit, AfterViewInit {
                 this.downRightSviUredjaji=this.turn90deg
                 const URL='http://localhost:4000/getAllUser'
                 this.getProductData(URL)
-                this.assignHasErrorAndStepNumber()
+                //this.assignHasErrorAndStepNumber()
                 break;
             }
         }
-    }
-
-    assignHasErrorAndStepNumber(){
-        setTimeout(() => {
-            console.log(this.stepNumber+"   daaa");
-        }, 5000);
-        console.log(this.stepNumber);
     }
 
     getProductData(url:string){
@@ -384,18 +402,48 @@ export class ProductComponent implements OnInit, AfterViewInit {
             }
             this.http.get(url).subscribe(response=>{
                 this.allProducts=response
+                this.savedAllProducts=response
+                this.stepNumber=(this.allProducts).length
             })
-            
+            setTimeout(() => {
+                let j:number=0
+                this.stepNumberArray=[]
+                this.stepNumber=(this.allProducts).length
+                for(let i=0;i<(this.allProducts).length;i+=this.stepNumber){
+                    this.hasErrorArray.push(false)
+                    this.stepNumberArray.push(j+1)
+                    j++;
+                    //console.log("stepNumber="+this.stepNumber+"   i="+i)
+                }
+                //console.log(this.stepNumberArray);
+            }, 500);
         }, 4000);
-        setTimeout(() => {
-            for(let i=0;i<(this.allProducts).length;i++){
-                this.hasErrorArray.push(false)
-            }
-            this.stepNumber=(this.allProducts).length
-        }, 8000);
-            
+        
     }
-    
+
+    getContentNumber(){
+        //let j:number=0
+        //setTimeout(()=>{
+            this.allProducts=this.savedAllProducts;
+            if(this.stepNumber>0){
+                this.stepNumberArray=[]
+                let i=0;
+                for(i;i<(this.allProducts).length;i+=this.stepNumber){
+                    this.stepNumberArray.push(i)
+                    console.log((this.allProducts).length+"  length");
+                }
+            }
+            else{
+                this.stepNumber=0
+            }
+            this.showContentUnderProducts(0,this.stepNumber)
+        //},0)
+    }
+
+    showContentUnderProducts(number1:number,number2:number){
+        this.allProducts=this.savedAllProducts
+        this.allProducts=(this.allProducts).slice(number1,number1+number2)
+    }
 
     /*createProductShape():void{
         for(let i=0;i<(this.allProducts).length;i++){
